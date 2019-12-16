@@ -1,0 +1,18 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Home Team</th>
+        <th scope="col">Home Result</th>
+        <th scope="col">Away Result</th>
+        <th scope="col">Away Team</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let match of matches">
+        <td>{{match.home_team.country}}</td>
+        <td>{{match.home_team.goals}}</td>
+        <td>{{match.away_team.country}}</td>
+        <td>{{match.away_team.goals}}</td>
+      </tr>
+    </tbody>
+</table>
