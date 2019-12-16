@@ -9,7 +9,7 @@ import { Match } from '../Modules/matchInterface';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  public fifaCodeText: string;
+  public fifaCode: string;
   @Input() teams: Array<Team>;
   @Output() selectedTeam: EventEmitter<Team> = new EventEmitter();
   @Output() underMatches: EventEmitter<Match> = new EventEmitter();
@@ -33,9 +33,8 @@ export class NavbarComponent implements OnInit {
     this.overMatches.emit(match);
   }
 
-  searchTeam(fifaCode: NgForm) {
-    this.fifaCodeText = fifaCode.value;
-    this.searchCode.emit(this.fifaCodeText);
+  searchTeam() {
+    this.searchCode.emit(this.fifaCode);
   }
 
   constructor() { }

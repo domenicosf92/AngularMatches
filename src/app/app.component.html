@@ -282,7 +282,12 @@
 </style>
 
 <!-- Toolbar -->
-<app-navbar [teams]='teamList' (selectedTeam)='onTeamSelected($event)' (allTeams)='onAllTeamSelected($event)' (searchedTeam)='teamSearched($event)' (underMatches)='onUnderSelected($event)' (overMatches)='onOverSelected($event)'></app-navbar>
+<app-navbar [teams]='teamList' 
+  (selectedTeam)='onTeamSelected($event)' 
+  (allTeams)='onAllTeamSelected($event)' 
+  (searchCode)='teamSearched($event)' 
+  (underMatches)='onUnderSelected($event)' 
+  (overMatches)='onOverSelected($event)'></app-navbar>
 <div class="content" role="main">
   <app-table [matches]='matchList'></app-table>
   <router-outlet></router-outlet>

@@ -39,13 +39,8 @@ export class AppComponent implements OnInit {
     });
   }
 
-  async teamSearched(fifaCode: NgForm) {
-    for (const team of this.teamList) {
-      if (team.fifa_code !== fifaCode.value) {
-        return false;
-      }
-    }
-    this.matchList = await this.matchService.getMatchesByFifaCode(fifaCode.value);
+  async teamSearched(fifaCode: string) {
+    this.matchList = await this.matchService.getMatchesByFifaCode(fifaCode);
   }
 
   async ngOnInit() {

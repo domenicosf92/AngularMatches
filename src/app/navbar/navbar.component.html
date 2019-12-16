@@ -24,8 +24,8 @@
           </div>
         </li>
       </ul>
-      <form #fifaCode="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)='searchTeam(fifaCode)'>
-        <input class="form-control mr-sm-2" type="search" placeholder="Insert fifa_code" aria-label="Search" name="fifaCode" [(ngModel)]="fifaCodeText">
+      <form class="form-inline my-2 my-lg-0" >
+        <input class="form-control mr-sm-2" type="search" placeholder="Insert fifa_code" aria-label="Search" (change)="searchTeam()" name="fifaCode" [ngModelOptions]="{standalone : true}" [(ngModel)]="fifaCode">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
