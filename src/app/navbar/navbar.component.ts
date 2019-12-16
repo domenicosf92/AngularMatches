@@ -15,7 +15,7 @@ export class NavbarComponent implements OnInit {
   @Output() underMatches: EventEmitter<Match> = new EventEmitter();
   @Output() overMatches: EventEmitter<Match> = new EventEmitter();
   @Output() allTeams: EventEmitter<Team> = new EventEmitter();
-  @Output() searchedTeam: EventEmitter<string> = new EventEmitter();
+  @Output() searchCode: EventEmitter<string> = new EventEmitter();
 
   onSelect(team: Team) {
     this.selectedTeam.emit(team);
@@ -35,7 +35,7 @@ export class NavbarComponent implements OnInit {
 
   searchTeam(fifaCode: NgForm) {
     this.fifaCodeText = fifaCode.value;
-    this.searchedTeam.emit(this.fifaCodeText);
+    this.searchCode.emit(this.fifaCodeText);
   }
 
   constructor() { }

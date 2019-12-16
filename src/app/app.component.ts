@@ -16,9 +16,8 @@ export class AppComponent implements OnInit {
   constructor(public matchService: MatchService, public teamService: TeamService) {}
   public matchList: Array<Match>;
   public teamList: Array<Team>;
+  public allMatches: Array<Match>; // matches copy
   public title = 'matchList';
-  public underMatch: Array<Match>;
-  public overMatch: Array<Match>;
 
   async onTeamSelected(team: Team) {
     this.matchList = await this.matchService.getMatchesByFifaCode(team.fifa_code);
@@ -29,19 +28,15 @@ export class AppComponent implements OnInit {
   }
 
   onUnderSelected() {
-    for (const element of this.matchList) {
-      if ((element.home_team.goals + element.away_team.goals) < 2) {
-        this.underMatch.push(element);
-      }
-    }
+    this.matchList = this.matchList.filter((match: Match) => {
+      return (match.home_team.goals + match.away_team.goals) < 2;
+    });
   }
 
   onOverSelected() {
-    for (const element of this.matchList) {
-      if ((element.home_team.goals + element.away_team.goals) > 2) {
-        this.overMatch.push(element);
-      }
-    }
+    this.matchList = this.matchList.filter((match: Match) => {
+      return (match.home_team.goals + match.away_team.goals) > 2;
+    });
   }
 
   async teamSearched(fifaCode: NgForm) {
@@ -58,5 +53,6 @@ export class AppComponent implements OnInit {
       this.matchService.getMatches(),
       this.teamService.getTeams()
     ]);
+    this.allMatches = [...this.matchList];
   }
 }
